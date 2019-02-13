@@ -15,11 +15,11 @@
  */
 package com.example.android.miwok;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,29 +29,55 @@ public class MainActivity extends AppCompatActivity {
 
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
-    }
 
-    // Opens screen with numbers category
-    public void openNumbersList(View v) {
-        Intent i = new Intent(this, NumbersActivity.class);
-        startActivity(i);
-    }
 
-    // Opens screen with family category
-    public void openFamilyList(View v) {
-        Intent i = new Intent(this, FamilyMembersActivity.class);
-        startActivity(i);
-    }
+//        Find the view that shows the numbers category
+        TextView numbers = (TextView) findViewById(R.id.numbers);
+//        Set a clickListener on that view
+        numbers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(v.getContext(), "Open the list of numbers", Toast.LENGTH_SHORT).show();
+//                Create a new intent to open the {@link NumbersActivity}
+                Intent numbersIntent = new Intent(MainActivity.this, NumbersActivity.class);
+                startActivity(numbersIntent);
+            }
+        });
 
-    // Opens screen with colors category
-    public void openColorsList(View v) {
-        Intent i = new Intent(this, ColorsActivity.class);
-        startActivity(i);
-    }
+//        Find the view that shows the family category
+        TextView family = (TextView) findViewById(R.id.family);
+//        Set a clickListener on that view
+        family.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Create a new intent to open the {@link FamilyMembersActivity}
+                Intent familyIntent = new Intent(MainActivity.this, FamilyMembersActivity.class);
+                startActivity(familyIntent);
+            }
+        });
 
-    // Opens screen with phrases category
-    public void openPhrasesList(View v) {
-        Intent i = new Intent(this, PhrasesActivity.class);
-        startActivity(i);
+//        Find the view that shows the colors category
+        TextView colors = (TextView) findViewById(R.id.colors);
+//        Set a clickListener on that view
+        colors.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Create a new intent to open the {@link ColorsActivity}
+                Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
+                startActivity(colorsIntent);
+            }
+        });
+
+//        Find the view that shows the phrases category
+        TextView phrases = (TextView) findViewById(R.id.phrases);
+//        Set a clickListener on that view
+        phrases.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Create a new intent to open the {@link PhrasesActivity}
+                Intent phrasesIntent = new Intent(MainActivity.this, PhrasesActivity.class);
+                startActivity(phrasesIntent);
+            }
+        });
     }
 }
