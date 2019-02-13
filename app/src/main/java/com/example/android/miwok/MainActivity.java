@@ -15,6 +15,7 @@
  */
 package com.example.android.miwok;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,9 +31,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    // Opens numbers category screen
+    // Opens screen with numbers category
     public void openNumbersList(View v) {
         Intent i = new Intent(this, NumbersActivity.class);
+        startActivity(i);
+    }
+
+    // Opens screen with family category
+    public void openFamilyList(View v) {
+        Intent i = new Intent(this, FamilyMembersActivity.class);
+        startActivity(i);
+    }
+
+    // Opens screen with colors category
+    public void openColorsList(View v) {
+        Intent i = new Intent(this, ColorsActivity.class);
+        startActivity(i);
+    }
+
+    // Opens screen with phrases category
+    public void openPhrasesList(View v) {
+        Intent i = new Intent(this, PhrasesActivity.class);
         startActivity(i);
     }
 }
