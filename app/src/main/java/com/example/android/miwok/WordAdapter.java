@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 // WordAdapter is a custom adapter that takes as it's input a list of Word objects
@@ -18,7 +17,7 @@ import java.util.List;
 public class WordAdapter extends ArrayAdapter<Word> {
 
 /** @param context  The current context. Used to inflate the layout file.
-    @param words    A List of AndroidFlavor objects to display in a list
+    @param words    A List of Word objects to display in a list
 */
     public WordAdapter(Context context, ArrayList<Word> words) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
@@ -30,12 +29,12 @@ public class WordAdapter extends ArrayAdapter<Word> {
     }
 
     /**
-     * Provides a view for an AdapterView (ListView, GridView, etc.)
+     * Provide a view for an AdapterView (ListView, GridView, etc.)
      *
      * @param position The position in the list of data that should be displayed in the
      *                 list item view.
      * @param convertView The recycled view to populate.
-     * @param parent The parent ViewGroup that is used for inflation.
+     * @param parent The parent ViewGroup that is used for inflation (in this case ListView)
      * @return The View for the position in the AdapterView.
      */
     @Override
@@ -45,6 +44,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // EITHER by reusing - get the list item = {@link Word} object located at this position in the list
         View listItemView = convertView;
         // OR inflate (= create) new list item view from list_item.xml
+//        false is there, because we don't want to attach list item to parent ListView yet
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
@@ -52,7 +52,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
         //Get the {@link Word} object located at this position in the list
         Word currentWord = getItem(position);
 
-        // Find the TextView in the list_item.xml layout with the ID version_name
+        // Find the TextView in the list_item.xml layout
         TextView miwokWord = (TextView) listItemView.findViewById(R.id.miwok_text_view);
         TextView defaultWord = (TextView) listItemView.findViewById(R.id.default_text_view);
         // Populate the data into the template view using the data object

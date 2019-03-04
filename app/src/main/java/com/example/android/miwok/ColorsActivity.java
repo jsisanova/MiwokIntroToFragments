@@ -12,6 +12,7 @@ public class ColorsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Set content view to ListView
         setContentView(R.layout.word_list);
 
         // Create a list of words
@@ -27,14 +28,14 @@ public class ColorsActivity extends AppCompatActivity {
         words.add(new Word("white", "kelelli"));
 
 
-        // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
+        // Create a {@link WordAdapter}, whose data source is a list of {@link Word}s. The
         // adapter knows how to create list items for each item in the list.
         WordAdapter adapter = new WordAdapter(this, words);
 
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
-        // word_listyout file.
+        // word_list file.
         ListView listView = (ListView) findViewById(R.id.list);
 
 
