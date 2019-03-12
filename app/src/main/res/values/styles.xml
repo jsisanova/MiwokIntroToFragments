@@ -18,16 +18,23 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryDark">@color/primary_dark_color</item>
+        <item name="android:textViewStyle">@style/MyTextViewStyle</item>
     </style>
+
+
 
     <!-- Style for a category of vocabulary words -->
     <style name="CategoryStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/list_item_height</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:padding">16dp</item>
-        <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    </style>
+
+    <!-- Style for the text -->
+    <style name="MyTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingLeft">@dimen/category_padding_left</item>
+        <item name="android:textSize">18sp</item>
     </style>
 </resources>
