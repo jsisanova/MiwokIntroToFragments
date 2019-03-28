@@ -18,7 +18,8 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * We’re going to go from having a NumbersActivity (before state) to having a NumbersActivity with a NumbersFragment contained inside it (after state)
+ * We’re going to go from having a NumbersActivity (before state) to having a NumbersActivity with a NumbersFragment contained inside it (after state).
+ * The NumbersActivity used to display the word_list.xml layout. Now, the NumbersActivity displays the activity_category.xml layout, and the NumbersFragment displays the word_list.xml layout.
  */
 public class NumbersFragment extends Fragment {
 
@@ -56,7 +57,6 @@ public class NumbersFragment extends Fragment {
             }
         }
     };
-
 
     /**
      * This listener gets triggered when the {@link MediaPlayer} has completed
@@ -101,12 +101,9 @@ public class NumbersFragment extends Fragment {
         }
     }
 
-
-
     public NumbersFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -114,7 +111,10 @@ public class NumbersFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.word_list, container, false);
 
-        // Create and setup the {@link AudioManager} to request audio focus
+        // Create and setup the {@link AudioManager} to request audio focus.
+        // Fragment does not have access to system services, whereas the Activity does - that's why
+        // get the Activity object instance first. This is the Activity that encloses the current Fragment,
+        // which will be the NumbersActivity for the NumbersFragment. Then call getSystemService(String) on that Activity object.
         mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
 
         // Create a list of words
@@ -134,6 +134,8 @@ public class NumbersFragment extends Fragment {
 
         // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
         // adapter knows how to create list items for each item in the list.
+        // “this” refers to this class (which is the NumbersFragment), and a Fragment is not a valid Context - hence
+        // we have to pass in a reference to the Activity that encloses this Fragment as the context = getActivity().
         WordAdapter adapter = new WordAdapter(getActivity(), words, R.color.category_numbers);
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
