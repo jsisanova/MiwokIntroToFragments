@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class CategoryAdapter extends FragmentPagerAdapter {
 
     /** Context of the app */
+    // We need a Context object in order to turn the string resource ID into an actual String
     private Context mContext;
 
     /**

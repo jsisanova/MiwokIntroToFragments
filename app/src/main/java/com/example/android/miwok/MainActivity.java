@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         // Set the adapter onto the view pager
         viewPager.setAdapter(adapter);
 
+        // https://guides.codepath.com/android/google-play-style-tabs-using-tablayout#sliding-tabs-layout
         // Find the tab layout that shows the tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         // Connect the tab layout with the view pager. This will
